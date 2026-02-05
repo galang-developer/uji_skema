@@ -61,13 +61,6 @@ public function profile() {
 public function role() {
     return $this->belongsTo(Role::class, 'id_role', 'id');
 }
-
-// Hash password jika diisi
-public function setPasswordAttribute($value) {
-    if (!empty($value)) {
-        $this->attributes['password'] = bcrypt($value);
-    }
-}
 ```
 
 ### Profile.php → `user()`
@@ -400,5 +393,6 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
