@@ -342,7 +342,22 @@ TextColumn::make('role.role_name')->label('Role')
 @endphp
 
 <style>
-    ...
+    .notif {
+        position: fixed;
+        top: 64px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #00c951;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        min-width: 300px;
+        z-index: 40;
+    }
 </style>
 
 <div x-data="infoLoop({{ $infos->toJson() }})" x-init="start()" class="notif">
@@ -357,7 +372,21 @@ TextColumn::make('role.role_name')->label('Role')
 </div>
 
 <script>
-    ...
+    function infoLoop(items) {
+        return {
+            items,
+            index: 0,
+            get current() {
+                return this.items[this.index]
+            },
+            start() {
+                if (this.items.length < 2) return
+                setInterval(() => {
+                    this.index = (this.index + 1) % this.items.length
+                }, 3000)
+            }
+        }
+    }
 </script>
 ```
 
@@ -372,3 +401,4 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
