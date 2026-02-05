@@ -248,8 +248,11 @@ public static function canCreate(): bool {
 
 ```php
 // Kata kunci: canCreate, canEdit, canViewAny, getNavigationUrl
-public static function canCreate(): bool { return false; }
+public static function canCreate(): bool {
+    return Auth::user()->role?->role_name === 'admin';
+}
 
+// Opsional
 public static function getNavigationUrl(): string {
     $user = Auth::user();
     $profile = $user->profile ?? $user->profile()->create(['id_user' => $user->id]);
@@ -393,6 +396,7 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
 
