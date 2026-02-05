@@ -351,7 +351,6 @@ TextColumn::make('role.role_name')->label('Role')
         color: #fff;
         padding: 12px 20px;
         border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
         display: flex;
         gap: 12px;
         align-items: center;
@@ -401,4 +400,5 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
