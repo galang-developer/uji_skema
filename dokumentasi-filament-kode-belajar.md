@@ -369,16 +369,9 @@ TextColumn::make('role.role_name')->label('Role')
 <script>
     function infoLoop(items) {
         return {
-            items,
-            index: 0,
-            get current() {
-                return this.items[this.index]
-            },
-            start() {
-                if (this.items.length < 2) return
-                setInterval(() => {
-                    this.index = (this.index + 1) % this.items.length
-                }, 3000)
+            c: items[0],
+            init() {
+                setInterval(() => this.c = items[Math.random() * items.length | 0], 2000)
             }
         }
     }
@@ -396,6 +389,7 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
 
