@@ -343,25 +343,19 @@ TextColumn::make('role.role_name')->label('Role')
         top: 64px;
         left: 50%;
         transform: translateX(-50%);
-        background: #00c951;
+        background: #ffbb00;
         color: #fff;
         padding: 12px 20px;
         border-radius: 8px;
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        min-width: 300px;
         z-index: 40;
     }
 </style>
 
-<div x-data="infoLoop({{ $infos->toJson() }})" x-init="start()" class="notif">
-    <span>🚀</span>
-
-    <template x-if="current">
+<div x-data="infoLoop({{ $infos->toJson() }})" x-init="init()" class="notif">
+    <template x-if="c">
         <div>
-            <h4 x-text="current.title"></h4>
-            <p x-text="current.teks"></p>
+            <h4 x-text="c.title"></h4>
+            <p x-text="c.teks"></p>
         </div>
     </template>
 </div>
@@ -389,6 +383,7 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
 
