@@ -317,6 +317,11 @@ protected static string $resource = ProfileResource::class;
 TextColumn::make('role.role_name')->label('Role')
 ```
 
+kalo mau nyembunyiin tombol kaya Hapus, Edit bisa pake kode ini
+```php
+->visible(fn() => Auth::user()->role?->role_name === 'admin')
+```
+
 ## 📢 9. Info Panel di Halaman Login
 
 ### Tambahkan Hook di `AuthPanelProvider.php`
@@ -383,6 +388,7 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
 
