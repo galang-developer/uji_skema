@@ -237,7 +237,7 @@ protected $fillable = [
 // Double klik terus ctrl + space kalo mau import lewat auto complete
 use Illuminate\Support\Facades\Auth;
 
-// Kata kunci: canAccess, canCreate, canEdit, canViewAny
+// Kata kunci: canAccess, canCreate, canEdit(Model $params), canDelete(Model $params), canViewAny
 public static function canCreate(): bool {
     return Auth::user()->role?->role_name === 'admin';
 }
@@ -247,7 +247,7 @@ public static function canCreate(): bool {
 ### ProfileResource.php → Auto redirect ke edit profile user:
 
 ```php
-// Kata kunci: canAccess, canCreate, canEdit, canViewAny, getNavigationUrl
+// Kata kunci: canAccess, canCreate, canEdit(Model $params), canDelete(Model $params), canViewAny, getNavigationUrl
 public static function canCreate(): bool {
     return Auth::user()->role?->role_name === 'admin';
 }
@@ -383,6 +383,7 @@ TextColumn::make('role.role_name')->label('Role')
 - Pastikan urutan migrasi sesuai
 - Jalankan seeder untuk role default
 - Tes hak akses dengan login admin/user berbeda
+
 
 
 
